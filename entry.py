@@ -35,7 +35,12 @@ def show_main_frame(mp3_info):
     art_img = art_img.resize((170, 170))  # Resize for display
     art_img_tk = ImageTk.PhotoImage(art_img)
 
-    notes_label = tk.Label(main_frame, justify="left", text="Notes:\n    Default for title is null\n    Default for artist is null\n    Default for year is 0000\n    Default for album is null")
+    notes_label = tk.Label(main_frame, justify="left", text="Notes:", font=("Arial", 10, "bold"))
+    bullet1_label = tk.Label(main_frame, justify="left", text=" * Enter desired information above")
+    bullet2_label = tk.Label(main_frame, justify="left", text=" * Replace values with \"null\" or \"0000\"")
+    bullet3_label = tk.Label(main_frame, justify="left", text=" * Year must be a numeric value")
+
+    next_button = tk.Button(main_frame, text="NEXT", font=("Arial", 10, "bold"))
 
     # Store reference to prevent garbage collection
     art_label = tk.Label(main_frame, image=art_img_tk)
@@ -56,7 +61,12 @@ def show_main_frame(mp3_info):
     album_text.grid(row = 4, column=1, sticky="E", pady=8, padx=10)
     album_entry.grid(row = 4, column = 2, sticky = "W", pady = 8, padx=10)
 
-    notes_label.grid(row = 5, column=0, columnspan=2, sticky="W", padx=10)
+    notes_label.grid(row = 5, column=0, columnspan=3, sticky="W", padx=(20, 0), pady=5)
+    bullet1_label.grid(row = 6, column=0, columnspan=3, sticky="W", padx=(20, 0), pady=2)
+    bullet2_label.grid(row = 7, column=0, columnspan=3, sticky="W", padx=(20, 0), pady=2)
+    bullet3_label.grid(row = 8, column=0, columnspan=3, sticky="W", padx=(20, 0), pady=2)
+
+    next_button.grid(row=8, column=2, sticky="SE", padx=(0, 10))
 
     main_frame.pack()
 
@@ -84,7 +94,7 @@ welcome_label = tk.Label(welcome_frame, text="SELECT MP3 FILE", font=("helvetica
 welcome_label.pack()
 
 # button
-select_mp3_button = tk.Button(welcome_frame, text="BROWSE", command=select_mp3)
+select_mp3_button = tk.Button(welcome_frame, text="BROWSE", font=("Arial", 10, "bold"), command=select_mp3)
 select_mp3_button.pack(pady=20)
 
 main_frame = tk.Frame(root)
